@@ -1,26 +1,1012 @@
 <!DOCTYPE html>
-<html lang="en" class="light">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
-  <title>Pilogram — TrustBook Messenger</title>
-  <!-- Fonts, CDN, Tailwind -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#7C3AED', accent: '#6366f1' } } } }
-  </script>
-  <!-- React + Babel -->
-  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  <!-- Lucide Icons (SVG) -->
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <!-- Custom Styles -->
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Gujarati Trader — India's Trusted Stock Community</title>
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <!-- GOOGLE FONTS: Poppins + Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,800;14..32,900&family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- META PIXEL -->
+    <script>
+        ! function(f, b, e, v, n, t, s) {
+            if (f.fbq) return;
+            n = f.fbq = function() {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n;
+            n.push = n;
+            n.loaded = !0;
+            n.version = '2.0';
+            n.queue = [];
+            t = b.createElement(e);
+            t.async = !0;
+            t.src = v;
+            s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+
+        fbq('init', '28348877731363340');
+    </script>
+    <noscript>
+        <img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=28348877731363340&ev=PageView&noscript=1"/>
+    </noscript>
+
+    <style>
+        /* ───────────── RESET & BASE ───────────── */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', 'Poppins', sans-serif;
+            background: #ffffff;
+            color: #1a1a2e;
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* ───────────── ANIMATED BG MESH (light version) ───────────── */
+        .bg-mesh {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .bg-mesh .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.15;
+            animation: floatOrb 18s ease-in-out infinite alternate;
+        }
+
+        .bg-mesh .orb:nth-child(1) {
+            width: 600px;
+            height: 600px;
+            top: -10%;
+            left: -10%;
+            background: radial-gradient(circle, #8e2de2, transparent 70%);
+            animation-duration: 22s;
+        }
+
+        .bg-mesh .orb:nth-child(2) {
+            width: 500px;
+            height: 500px;
+            bottom: -10%;
+            right: -10%;
+            background: radial-gradient(circle, #00c6ff, transparent 70%);
+            animation-duration: 26s;
+            animation-delay: -4s;
+        }
+
+        .bg-mesh .orb:nth-child(3) {
+            width: 400px;
+            height: 400px;
+            top: 40%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: radial-gradient(circle, #ff0080, transparent 70%);
+            animation-duration: 20s;
+            animation-delay: -8s;
+            opacity: 0.08;
+        }
+
+        @keyframes floatOrb {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+            33% {
+                transform: translate(60px, -40px) scale(1.1);
+            }
+            66% {
+                transform: translate(-30px, 50px) scale(0.9);
+            }
+            100% {
+                transform: translate(20px, -20px) scale(1.05);
+            }
+        }
+
+        /* ───────────── WRAPPER ───────────── */
+        .wrapper {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px 20px 20px;
+        }
+
+        /* ───────────── HERO ───────────── */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 0 10px;
+            text-align: center;
+        }
+
+        /* ── LOGO ── */
+        .logo-wrap {
+            position: relative;
+            margin-bottom: 18px;
+        }
+
+        .logo-ring {
+            position: absolute;
+            inset: -8px;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            background: conic-gradient(from 0deg, #00c6ff, #8e2de2, #ff0080, #00c6ff) border-box;
+            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            animation: spinRing 6s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes spinRing {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .logo-ring-inner {
+            position: absolute;
+            inset: -14px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(0, 198, 255, 0.08), transparent 70%);
+            filter: blur(6px);
+            animation: pulseGlow 3s ease-in-out infinite alternate;
+            pointer-events: none;
+        }
+
+        @keyframes pulseGlow {
+            0% {
+                opacity: 0.3;
+                transform: scale(0.95);
+            }
+            100% {
+                opacity: 0.7;
+                transform: scale(1.05);
+            }
+        }
+
+        .hero img {
+            position: relative;
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(0, 0, 0, 0.06);
+            background: #f8f8fc;
+            display: block;
+            box-shadow:
+                0 0 30px rgba(0, 198, 255, 0.15),
+                0 0 60px rgba(142, 45, 226, 0.08);
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .hero img:hover {
+            transform: scale(1.04) rotate(-2deg);
+        }
+
+        /* ── NAME ── */
+        .trader-name {
+            font-family: 'Poppins', sans-serif;
+            font-size: 28px;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+            margin-bottom: 6px;
+            background: linear-gradient(135deg, #f5a623 0%, #f7c948 25%, #ff6b9d 50%, #8e2de2 75%, #00c6ff 100%);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 5s ease-in-out infinite alternate;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .trader-sub {
+            font-size: 13px;
+            font-weight: 600;
+            color: rgba(0, 0, 0, 0.3);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        /* ── TAGLINE ── */
+        .hero h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(26px, 5vw, 38px);
+            font-weight: 900;
+            line-height: 1.2;
+            margin: 6px 0 8px;
+            color: #1a1a2e;
+        }
+
+        .hero .subtitle {
+            font-size: 16px;
+            color: rgba(0, 0, 0, 0.5);
+            font-weight: 400;
+            max-width: 420px;
+            margin: 0 auto 24px;
+        }
+
+        /* ── CTA ── */
+        .cta-wrap {
+            width: 100%;
+            max-width: 380px;
+            position: relative;
+            margin-bottom: 18px;
+        }
+
+        .cta-pulse {
+            position: absolute;
+            inset: -4px;
+            border-radius: 60px;
+            background: linear-gradient(90deg, #ff0080, #8e2de2, #00c6ff);
+            filter: blur(12px);
+            opacity: 0.3;
+            animation: ctaPulse 2.4s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes ctaPulse {
+            0%,
+            100% {
+                opacity: 0.2;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.6;
+                transform: scale(1.06);
+            }
+        }
+
+        .cta {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            padding: 18px 28px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 17px;
+            font-weight: 800;
+            border-radius: 60px;
+            border: none;
+            background: linear-gradient(135deg, #00c6ff, #8e2de2, #ff0080);
+            background-size: 200% 200%;
+            color: #fff;
+            text-decoration: none;
+            letter-spacing: 0.3px;
+            box-shadow: 0 8px 32px rgba(0, 198, 255, 0.25);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            cursor: pointer;
+            animation: gradientMove 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+            100% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .cta:hover {
+            transform: scale(1.03) translateY(-2px);
+            box-shadow: 0 12px 48px rgba(0, 198, 255, 0.45), 0 0 80px rgba(142, 45, 226, 0.15);
+        }
+
+        .cta:active {
+            transform: scale(0.97);
+        }
+
+        .cta i {
+            font-size: 20px;
+        }
+
+        .cta .badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 2px 12px;
+            border-radius: 40px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            backdrop-filter: blur(4px);
+        }
+
+        /* ── TRUST BADGES ── */
+        .trust-badges {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 18px 30px;
+            margin: 14px 0 4px;
+            padding: 10px 0;
+        }
+
+        .trust-badges span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            font-weight: 500;
+            color: rgba(0, 0, 0, 0.5);
+        }
+
+        .trust-badges i {
+            color: #f5a623;
+            font-size: 15px;
+        }
+
+        /* ───────────── FEATURES ───────────── */
+        .features {
+            padding: 30px 0 10px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            border-radius: 20px;
+            padding: 22px 18px 20px;
+            text-align: left;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            cursor: default;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 198, 255, 0.04), rgba(142, 45, 226, 0.04));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-6px) scale(1.01);
+            border-color: rgba(0, 198, 255, 0.2);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06), 0 0 40px rgba(0, 198, 255, 0.04);
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-card .icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, rgba(0, 198, 255, 0.1), rgba(142, 45, 226, 0.1));
+            margin-bottom: 12px;
+            font-size: 20px;
+            color: #00c6ff;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover .icon {
+            background: linear-gradient(135deg, rgba(0, 198, 255, 0.2), rgba(142, 45, 226, 0.2));
+            transform: scale(1.05) rotate(-4deg);
+            box-shadow: 0 0 30px rgba(0, 198, 255, 0.08);
+        }
+
+        .feature-card h3 {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: #1a1a2e;
+            letter-spacing: -0.2px;
+        }
+
+        .feature-card p {
+            font-size: 13px;
+            color: rgba(0, 0, 0, 0.5);
+            line-height: 1.5;
+            font-weight: 400;
+        }
+
+        /* ───────────── STATS ───────────── */
+        .stats {
+            padding: 30px 0 10px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+
+        .stat-item {
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-radius: 16px;
+            padding: 18px 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+        }
+
+        .stat-item:hover {
+            border-color: rgba(0, 198, 255, 0.15);
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+        }
+
+        .stat-number {
+            font-family: 'Poppins', sans-serif;
+            font-size: 26px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #00c6ff, #8e2de2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: rgba(0, 0, 0, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 2px;
+        }
+
+        /* ───────────── TESTIMONIAL ───────────── */
+        .testimonial {
+            padding: 24px 0 6px;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-radius: 20px;
+            padding: 24px 22px;
+            text-align: left;
+            position: relative;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+        }
+
+        .testimonial-card .quote-icon {
+            font-size: 28px;
+            color: rgba(0, 198, 255, 0.15);
+            margin-bottom: 6px;
+        }
+
+        .testimonial-card blockquote {
+            font-size: 15px;
+            font-weight: 400;
+            color: rgba(0, 0, 0, 0.7);
+            line-height: 1.7;
+            font-style: italic;
+            margin-bottom: 14px;
+        }
+
+        .testimonial-card .author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .testimonial-card .author .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00c6ff, #8e2de2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 16px;
+            color: #fff;
+        }
+
+        .testimonial-card .author .name {
+            font-weight: 700;
+            font-size: 14px;
+            color: #1a1a2e;
+        }
+
+        .testimonial-card .author .role {
+            font-size: 12px;
+            color: rgba(0, 0, 0, 0.35);
+        }
+
+        /* stars */
+        .stars {
+            color: #f5a623;
+            font-size: 13px;
+            letter-spacing: 2px;
+            margin-bottom: 4px;
+        }
+
+        /* ───────────── FOOTER ───────────── */
+        .footer {
+            padding: 30px 10px 16px;
+            text-align: center;
+            border-top: 1px solid rgba(0, 0, 0, 0.04);
+            margin-top: 20px;
+        }
+
+        .footer .socials {
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+            margin-bottom: 14px;
+        }
+
+        .footer .socials a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            color: rgba(0, 0, 0, 0.3);
+            font-size: 16px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .footer .socials a:hover {
+            background: rgba(0, 198, 255, 0.08);
+            border-color: rgba(0, 198, 255, 0.15);
+            color: #00c6ff;
+            transform: translateY(-3px);
+        }
+
+        .footer p {
+            font-size: 12px;
+            color: rgba(0, 0, 0, 0.2);
+            letter-spacing: 0.3px;
+        }
+
+        .footer p span {
+            color: rgba(0, 0, 0, 0.08);
+        }
+
+        /* ───────────── RESPONSIVE ───────────── */
+        @media (max-width: 640px) {
+            .wrapper {
+                padding: 16px 14px 10px;
+            }
+
+            .hero img {
+                width: 110px;
+                height: 110px;
+            }
+
+            .trader-name {
+                font-size: 22px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+
+            .feature-card {
+                padding: 16px 14px 14px;
+            }
+
+            .feature-card .icon {
+                width: 36px;
+                height: 36px;
+                font-size: 16px;
+            }
+
+            .feature-card h3 {
+                font-size: 13px;
+            }
+
+            .feature-card p {
+                font-size: 12px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+            }
+
+            .stat-number {
+                font-size: 20px;
+            }
+
+            .cta {
+                font-size: 15px;
+                padding: 16px 20px;
+            }
+
+            .trust-badges {
+                gap: 12px 18px;
+            }
+
+            .trust-badges span {
+                font-size: 11px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .features-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+            }
+
+            .feature-card {
+                padding: 14px 10px 12px;
+                border-radius: 14px;
+            }
+
+            .feature-card .icon {
+                width: 30px;
+                height: 30px;
+                font-size: 14px;
+                border-radius: 10px;
+                margin-bottom: 8px;
+            }
+
+            .feature-card h3 {
+                font-size: 12px;
+            }
+
+            .feature-card p {
+                font-size: 11px;
+            }
+        }
+
+        /* ───────────── SCROLL ANIMATIONS ───────────── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 {
+            transition-delay: 0.08s;
+        }
+        .reveal-delay-2 {
+            transition-delay: 0.16s;
+        }
+        .reveal-delay-3 {
+            transition-delay: 0.24s;
+        }
+        .reveal-delay-4 {
+            transition-delay: 0.32s;
+        }
+        .reveal-delay-5 {
+            transition-delay: 0.40s;
+        }
+        .reveal-delay-6 {
+            transition-delay: 0.48s;
+        }
+        .reveal-delay-7 {
+            transition-delay: 0.56s;
+        }
+        .reveal-delay-8 {
+            transition-delay: 0.64s;
+        }
+    </style>
 </head>
+
 <body>
-  <div id="root"></div>
-  <script type="text/babel" src="app.js"></script>
+
+    <!-- ─── ANIMATED BG (light version) ─── -->
+    <div class="bg-mesh" aria-hidden="true">
+        <div class="orb"></div>
+        <div class="orb"></div>
+        <div class="orb"></div>
+    </div>
+
+    <!-- ─── WRAPPER ─── -->
+    <div class="wrapper">
+
+        <!-- ═══ HERO ═══ -->
+        <section class="hero">
+
+            <div class="logo-wrap">
+                <div class="logo-ring-inner"></div>
+                <div class="logo-ring"></div>
+                <img src="https://uploads.onecompiler.io/4485gpckx/44ngftun7/ChatGPT%20Image%20May%206,%202026,%2009_31_48%20PM.png"
+                alt="Gujarati Trader Logo" loading="lazy">
+            </div>
+
+            <div class="trader-name">💎 ગુજરાતી 𝐓𝐑𝐀𝐃𝐄𝐑 💎</div>
+            <div class="trader-sub">— Since 2020 —</div>
+
+            <h1>India's Most Trusted<br>Stock Market Community</h1>
+            <p class="subtitle">Free Signals &bull; Daily Analysis &bull; Smart Risk Management</p>
+
+            <!-- SINGLE CTA BUTTON -->
+            <div class="cta-wrap">
+                <div class="cta-pulse"></div>
+                <a href="https://t.me/+Urlvti0tpCsxNTA9"
+                target="_blank"
+                class="cta subscribe-btn"
+                id="mainCta">
+                <i class="fab fa-telegram-plane"></i>
+                Join Our Telegram
+                <span class="badge">Free</span>
+            </a>
+        </div>
+
+        <!-- Trust badges -->
+        <div class="trust-badges">
+            <span><i class="fa-solid fa-circle-check"></i> 12K+ Members</span>
+            <span><i class="fa-solid fa-circle-check"></i> 94% Accuracy</span>
+            <span><i class="fa-solid fa-circle-check"></i> Live Signals</span>
+        </div>
+
+    </section>
+
+    <!-- ═══ FEATURES ═══ -->
+    <section class="features">
+        <div class="features-grid">
+
+            <div class="feature-card reveal reveal-delay-1">
+                <div class="icon"><i class="fa-solid fa-chart-line"></i></div>
+                <h3>Intraday &amp; Options</h3>
+                <p>NIFTY &amp; BANKNIFTY calls with precise entry &amp; exit.</p>
+            </div>
+
+            <div class="feature-card reveal reveal-delay-2">
+                <div class="icon"><i class="fa-solid fa-bullseye"></i></div>
+                <h3>Target Levels</h3>
+                <p>Accurate SL, target &amp; risk-reward ratio for every trade.</p>
+            </div>
+
+            <div class="feature-card reveal reveal-delay-3">
+                <div class="icon"><i class="fa-solid fa-shield"></i></div>
+                <h3>Risk Management</h3>
+                <p>Capital protection with disciplined position sizing.</p>
+            </div>
+
+            <div class="feature-card reveal reveal-delay-4">
+                <div class="icon"><i class="fa-solid fa-fire"></i></div>
+                <h3>Daily Analysis</h3>
+                <p>Free &amp; premium market insights before market open.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ═══ STATS ═══ -->
+    <section class="stats">
+        <div class="stats-grid">
+
+            <div class="stat-item reveal reveal-delay-1">
+                <div class="stat-number" data-count="12846">0</div>
+                <div class="stat-label">Members</div>
+            </div>
+
+            <div class="stat-item reveal reveal-delay-2">
+                <div class="stat-number" data-count="94">0</div>
+                <div class="stat-label">Accuracy %</div>
+            </div>
+
+            <div class="stat-item reveal reveal-delay-3">
+                <div class="stat-number" data-count="1560">0</div>
+                <div class="stat-label">Signals Sent</div>
+            </div>
+
+            <div class="stat-item reveal reveal-delay-4">
+                <div class="stat-number" data-count="4.8">0</div>
+                <div class="stat-label">Rating / 5</div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ═══ TESTIMONIAL ═══ -->
+    <section class="testimonial">
+        <div class="testimonial-card reveal">
+            <div class="stars">★ ★ ★ ★ ★</div>
+            <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+            <blockquote>
+                “Best trading community I've ever joined. The signals are spot-on and the risk management guidance has completely changed my approach. Highly recommended!”
+            </blockquote>
+            <div class="author">
+                <div class="avatar">RK</div>
+                <div>
+                    <div class="name">Rahul K.</div>
+                    <div class="role">Trader • 2+ Years</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer class="footer">
+        <div class="socials">
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://telegram.dog/+13L92QgQIqIwNmM1" target="_blank" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+        </div>
+        <p>&copy; 2026 Gujarati Trader &bull; All Rights Reserved <span>•</span> Made with <i class="fa-regular fa-heart" style="color:rgba(0,0,0,0.08);font-size:11px;"></i></p>
+    </footer>
+
+    </div>
+    <!-- ─── END WRAPPER ─── -->
+
+
+    <!-- ─── EXACT TRACKING SCRIPT (YOUR ORIGINAL - UNCHANGED) ─── -->
+    <script>
+        const PAGEVIEW_KEY = "gt_pageview_tracked";
+        const SUBSCRIBE_KEY = "gt_subscribe_tracked";
+
+        /* PAGE VIEW - ONLY ONCE */
+        if (!localStorage.getItem(PAGEVIEW_KEY)) {
+            fbq('track', 'PageView');
+            localStorage.setItem(PAGEVIEW_KEY, "true");
+            console.log("✅ PageView tracked");
+        }
+
+        /* TELEGRAM JOIN - ONLY ONCE */
+        document.querySelector(".subscribe-btn").addEventListener("click", function() {
+
+            if (!localStorage.getItem(SUBSCRIBE_KEY)) {
+
+                fbq('track', 'Lead');
+                fbq('trackCustom', 'TelegramSubscribe', {
+                    source: 'Landing Page',
+                    platform: 'Telegram'
+                });
+
+                localStorage.setItem(SUBSCRIBE_KEY, "true");
+                console.log("✅ Subscribe tracked");
+            }
+        });
+    </script>
+
+    <!-- ─── ADDITIONAL INTERACTIONS (counters, scroll, etc.) ─── -->
+    <script>
+        (function() {
+            'use strict';
+
+            /* ── STAT COUNTER ANIMATION ── */
+            const statNumbers = document.querySelectorAll('.stat-number');
+
+            function animateCounters() {
+                statNumbers.forEach(function(el) {
+                    const target = parseFloat(el.getAttribute('data-count'));
+                    if (isNaN(target)) return;
+                    if (el.dataset.animated === 'true') return;
+
+                    const duration = 1800;
+                    const startTime = performance.now();
+                    const isFloat = target % 1 !== 0;
+
+                    function updateCounter(currentTime) {
+                        const elapsed = currentTime - startTime;
+                        const progress = Math.min(elapsed / duration, 1);
+                        const eased = 1 - Math.pow(1 - progress, 4);
+                        const current = eased * target;
+
+                        if (isFloat) {
+                            el.textContent = current.toFixed(1);
+                        } else {
+                            el.textContent = Math.floor(current);
+                        }
+
+                        if (progress < 1) {
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            el.textContent = isFloat ? target.toFixed(1) : Math.floor(target);
+                            el.dataset.animated = 'true';
+                        }
+                    }
+                    requestAnimationFrame(updateCounter);
+                });
+            }
+
+            /* ── INTERSECTION OBSERVER ── */
+            const revealEls = document.querySelectorAll('.reveal');
+            const observer = new IntersectionObserver(function(entries) {
+                let shouldAnimateStats = false;
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        if (entry.target.closest('.stat-item') || entry.target.classList.contains('stat-item')) {
+                            shouldAnimateStats = true;
+                        }
+                    }
+                });
+                if (shouldAnimateStats) {
+                    setTimeout(animateCounters, 400);
+                }
+            }, {
+                threshold: 0.15,
+                rootMargin: '0px 0px -40px 0px'
+            });
+
+            revealEls.forEach(function(el) {
+                observer.observe(el);
+            });
+            document.querySelectorAll('.stat-item').forEach(function(el) {
+                observer.observe(el);
+            });
+
+            // If stats are already visible on load
+            setTimeout(function() {
+                if (document.querySelector('.stat-item.reveal.visible')) {
+                    animateCounters();
+                }
+            }, 800);
+
+            /* ── SMOOTH SCROLL (optional) ── */
+            document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+                anchor.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    const targetEl = document.querySelector(targetId);
+                    if (targetEl) {
+                        e.preventDefault();
+                        targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+
+        })();
+    </script>
+
 </body>
 </html>
